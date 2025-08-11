@@ -27,8 +27,10 @@ export class UpdateComponent {
   updateFg = this._fB.group({
     emailCtrl: [''],
     passwordCtrl: [''],
-    confirmPasswordCtrl: ['']
+    confirmPasswordCtrl: [''],
+    usernameCtrl:['']
   })
+  Username: any;
 
   get EmailCtrl(): FormControl {
     return this.updateFg.get('emailCtrl') as FormControl;
@@ -41,13 +43,18 @@ export class UpdateComponent {
   get ConfirmPasswordCtrl(): FormControl {
     return this.updateFg.get('confirmPasswordCtrl') as FormControl;
   }
+
+  get UsernameCtrl(): FormControl {
+    return this.updateFg.get('usernameCtrl') as FormControl;
+  }
   
 
   update(): void {
     let userInput: AppUser = {
       email: this.EmailCtrl.value,
       password: this.PasswordCtrl.value,
-      confirmPassword: this.ConfirmPasswordCtrl.value
+      confirmPassword: this.ConfirmPasswordCtrl.value,
+      username: this.Username.value
     }
 
     this._http.put<AppUser>

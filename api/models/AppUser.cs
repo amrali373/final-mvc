@@ -4,8 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace api.models;
 
-public record AppUser
-(
+public record AppUser(
         [property: BsonId, BsonRepresentation(BsonType.ObjectId)] string? Id,
         [EmailAddress, MaxLength(50)]
         string Email,

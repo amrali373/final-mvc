@@ -29,7 +29,8 @@ export class RegisterComponent {
   registerFg = this._fB.group({
     emailCtrl: ['', [Validators.required, Validators.maxLength(50), Validators.email]],
     passwordCtrl: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
-    confirmPasswordCtrl: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]]
+    usernameCtrl:['', [Validators.required, Validators.maxLength(50)]],
+    confirmPasswordCtrl: ['', [Validators.required]]
   })
 
   get EmailCtrl(): FormControl {
@@ -43,13 +44,18 @@ export class RegisterComponent {
   get ConfirmPasswordCtrl(): FormControl {
     return this.registerFg.get('confirmPasswordCtrl') as FormControl;
   }
+
+    get UserNameCtrl(): FormControl {
+    return this.registerFg.get('usernameCtrl') as FormControl;
+  }
   //#endregion
 
   register(): void {
     let userInput: AppUser = {
       email: this.EmailCtrl.value,
       password: this.PasswordCtrl.value,
-      confirmPassword: this.ConfirmPasswordCtrl.value
+      confirmPassword: this.ConfirmPasswordCtrl.value,
+      username: ''
     }
 
     this._http.post<AppUser>('http://localhost:5000/api/user/register', userInput).subscribe({

@@ -25,11 +25,11 @@ export class MemberComponent {
 
   //#region fG
   userFg = this._fB.group({
-    emailCtrl: ['']
+    usernameCtrl:['']
   })
 
-  get EmailCtrl(): FormControl {
-    return this.userFg.get('emailCtrl') as FormControl;
+    get UserNameCtrl(): FormControl {
+    return this.userFg.get('usernameCtrl') as FormControl;
   }
   //#endregion
 
@@ -42,10 +42,10 @@ export class MemberComponent {
     })
   }
 
-  getByEmail(): void {
-    let req = this.EmailCtrl.value
+  getByUserName(): void {
+    let req = this.UserNameCtrl.value
 
-    this._http.get<AppUser>('http://localhost:5000/api/user/get-by-email/' + req).subscribe({
+    this._http.get<AppUser>('http://localhost:5000/api/user/get-by-username/' + req).subscribe({
       next: (res) => {
         console.log(res);
         this.userRes = res;

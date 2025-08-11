@@ -76,11 +76,11 @@ public class UserController : ControllerBase
         return newUser;
     }
 
-        [HttpDelete("delete-by-id/{userId}")]
+    [HttpDelete("delete-by-id/{userId}")]
     public ActionResult<DeleteResult> DeleteById(string userId)
     {
         AppUser? user = _collection.Find(appUser => appUser.Id == userId).FirstOrDefault();
-        
+
         if (user is null)
             return NotFound("User not found");
 

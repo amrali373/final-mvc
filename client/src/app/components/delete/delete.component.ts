@@ -15,6 +15,6 @@ export class DeleteComponent {
 
   delete(): void {
     this._http.delete
-      ('http://localhost:5000/api/user/delete-by-id/6874dd62da630f9bcf1a5c01').subscribe();
+      ('http://localhost:5000/api/user/delete-by-id/688637931403814be562bab8').subscribe();
   }
 }
